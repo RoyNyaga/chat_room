@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<div id="room-id" data-room-id="<%= @room.try(:id) %>"></div>
+<div id="user-id" data-user-id="<%= current_user.id %>"></div>
 <div class="container-fluid">
 <%= current_user.username %>
   <div class="row">
@@ -22,7 +23,9 @@
         <div class="chat-room">
           <p><%= @room.name %></p>
           <% @room.messages.each do |message| %>
-            <%= render "messages/message", message: message %>
+            <div id="messages">
+              <%= render "messages/message", message: message %>
+            </div>
           <% end %>
           <div class="chat-box">
             <%= render "messages/form", message: Message.new, room: @room %>
