@@ -3,6 +3,7 @@ import consumer from "./consumer"
 document.addEventListener("turbolinks:load", () => {
   const room_element = document.getElementById("room-id")
   const room_id = Number(room_element.getAttribute("data-room-id"))
+  console.log("this room_id", room_id)
   consumer.subscriptions.create({ channel: "RoomChannel", room_id: room_id}, {
     connected() {
       console.log("connected to " + room_id)
